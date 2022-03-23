@@ -20,10 +20,23 @@ void bubbleSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo) {
     troca(primeiro[j],primeiro[j+1]);
 }
 
+template <class RandomAccessIterator, class Compare>
+void bubbleSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo, Compare Comparer) {
+    int len = ultimo - primeiro;
+    for(int i=1; i<=len; i++)
+    for(int j=0; j < len-i; j++)
+    if(Comparer(primeiro[j],primeiro[j+1]))
+    troca(primeiro[j],primeiro[j+1]);
+}
+
+int maior(int &a, int &b) {
+    return a < b;
+}
+
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
 
-    bubbleSort(vetorTeste, vetorTeste+MAXN);
+    bubbleSort(vetorTeste, vetorTeste+MAXN, maior);
 
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
