@@ -117,7 +117,7 @@ int maior(int &a, int &b) {
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
 
-    mergeSort(vetorTeste, vetorTeste+MAXN,maior);
+    mergeSort(vetorTeste, vetorTeste+MAXN);
 
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
