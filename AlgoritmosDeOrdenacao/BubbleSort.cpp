@@ -30,7 +30,7 @@ void bubbleSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo, Comp
 }
 
 int maior(int &a, int &b) {
-    return a < b;
+    return a > b;
 }
 
 int main() {
