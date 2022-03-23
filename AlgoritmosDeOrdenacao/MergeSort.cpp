@@ -53,8 +53,8 @@ void mergeSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo) {
     if(len > 1) {
         mergeSort(primeiro,primeiro+mid);
         mergeSort(primeiro+mid,ultimo);
+        merge(primeiro,ultimo);
     }
-    merge(primeiro,ultimo);
 }
 
 
@@ -106,8 +106,8 @@ void mergeSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo, Compa
     if(len > 1) {
         mergeSort(primeiro,primeiro+mid,Comparer);
         mergeSort(primeiro+mid,ultimo,Comparer);
+        merge(primeiro,ultimo,Comparer);
     }
-    merge(primeiro,ultimo,Comparer);
 }
 
 int maior(int &a, int &b) {
@@ -117,7 +117,7 @@ int maior(int &a, int &b) {
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
 
-    mergeSort(vetorTeste, vetorTeste+MAXN, maior);
+    mergeSort(vetorTeste, vetorTeste+MAXN);
 
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
