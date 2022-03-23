@@ -94,7 +94,7 @@ int maior(int &a, int &b) {
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
     
-    heapSort(vetorTeste, vetorTeste+MAXN,maior);
+    heapSort(vetorTeste, vetorTeste+MAXN);
     
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
