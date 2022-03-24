@@ -59,10 +59,10 @@ void heapify(RandomAccessIterator primeiro, RandomAccessIterator ultimo, int ind
     int right = index*2+2;
     int able = left;
 
-    if(right < len && comparer(primeiro[right],primeiro[left]))
+    if(right < len && comparer(primeiro[left],primeiro[right]))
         able = right;
     
-    if(left < len && comparer(primeiro[able],primeiro[index])) {
+    if(left < len && comparer(primeiro[index],primeiro[able])) {
         troca(primeiro[able],primeiro[index]);
         heapify(primeiro, ultimo, able, comparer);
     }
@@ -94,7 +94,7 @@ int maior(int &a, int &b) {
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
     
-    heapSort(vetorTeste, vetorTeste+MAXN);
+    heapSort(vetorTeste, vetorTeste+MAXN, maior);
     
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
