@@ -75,7 +75,7 @@ void merge(RandomAccessIterator primeiro, RandomAccessIterator ultimo, Compare C
 
     int i=0, j = mid;
     while(i < mid && j < len) {
-        if(Comparer(vetor[j],vetor[i])) {
+        if(Comparer(vetor[i],vetor[j])) {
             troca(vetor[i], primeiro[count]);
             i++;
         }
@@ -117,7 +117,7 @@ int maior(int &a, int &b) {
 int main() {
     int vetorTeste[MAXN] = {9,7,3,8,6,2,5,1,4,0};
 
-    mergeSort(vetorTeste, vetorTeste+MAXN);
+    mergeSort(vetorTeste, vetorTeste+MAXN, maior);
 
     for(int i=0; i<MAXN; i++)
         cout << vetorTeste[i] << " ";
