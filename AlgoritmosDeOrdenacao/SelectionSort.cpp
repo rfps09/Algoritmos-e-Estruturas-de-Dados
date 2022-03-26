@@ -34,7 +34,7 @@ void selectionSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo, C
 }
 
 int maior(int &a, int &b) {
-    return a < b;
+    return a > b;
 }
 
 int main() {
