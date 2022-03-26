@@ -46,7 +46,7 @@ void shellSort(RandomAccessIterator primeiro, RandomAccessIterator ultimo, Compa
 }
 
 int maior(int &a, int &b) {
-    return a < b;
+    return a > b;
 }
 
 int main() {
