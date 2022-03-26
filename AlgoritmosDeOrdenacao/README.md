@@ -2,8 +2,8 @@
 
 Obs: eu sempre vou explicar os algoritmos ordenando de maneira crescente, mas para ordenar de maneira decrescente é só pensar o contrário na hora da comparação
 
-# BubbleSort
-    Foi o primeiro algoritmo que aprendi e um dos mais fácil de implementar. A ideia do aklgoritmo se baseia em colocar o maior elemento no final, e para isso faz sucessivas comparações e troca de elementos com o intuito de colocar o maior elemento na possição correta, ou seja, na primeira iteração ele coloca o maior elemento no final, na segunda iteração o segundo maior elemento no final, na terceira iteração o terceio maior elemento no final e assim por diante até ordenar o vetor.
+# [BubbleSort](https://github.com/rfps09/Algoritmos-e-Estruturas-de-Dados/blob/main/AlgoritmosDeOrdenacao/BubbleSort.cpp)
+    >Foi o primeiro algoritmo que aprendi e um dos mais fácil de implementar. A ideia do aklgoritmo se baseia em colocar o maior elemento no final, e para isso faz sucessivas comparações e troca de elementos com o intuito de colocar o maior elemento na possição correta, ou seja, na primeira iteração ele coloca o maior elemento no final, na segunda iteração o segundo maior elemento no final, na terceira iteração o terceio maior elemento no final e assim por diante até ordenar o vetor.
 
 # SelectionSort
     Assim como o bubbleSort é um algoritmo bem simples de implementar e sua ideia é bem intuitiva. A ideia do algoritmo é percorrer o vetor e achar o menor elemento dele (bom, achar o index dele) feito isso nós sabemos que como ele é o menor elemento ele deve ficar na primeira posição, após isso é só procurar o menor elemento nos candidatos restantes e colocar ele na segunda posição do vetor, e assim por diante.
