@@ -10,6 +10,8 @@ Obs: eu sempre vou explicar os algoritmos ordenando de maneira crescente, mas pa
 # [SelectionSort](https://github.com/rfps09/Algoritmos-e-Estruturas-de-Dados/blob/main/AlgoritmosDeOrdenacao/SelectionSort.cpp)
 >Assim como o bubbleSort é um algoritmo bem simples de implementar e sua ideia é bem intuitiva. A ideia do algoritmo é percorrer o vetor e achar o menor elemento dele (bom, achar o index dele) feito isso nós sabemos que como ele é o menor elemento ele deve ficar na primeira posição, após isso é só procurar o menor elemento nos candidatos restantes e colocar ele na segunda posição do vetor, e assim por diante.
 
+![SelectionSort](/AlgoritmosDeOrdenacao/img/SelectionSort.jpg)
+
 # [InsertionSort](https://github.com/rfps09/Algoritmos-e-Estruturas-de-Dados/blob/main/AlgoritmosDeOrdenacao/InsertionSort.cpp)
 >Não diferente do bubbleSort e selectionSort, o insertionSort é um algoritmo bem fácil de implementar. A ideia dele é assumir que um vetor de tamanho N, tem apenas 1 elemento ao invés de N (bom, o vetor de tamanho N pode ter o N valendo 1, mas ai não teria que ordenar, então bom senso ao imaginar esse N), feito isso nós vamos "inserir" o nosso segundo elemento, porém nós não podemos inserir ele em qualquer lugar, devemos inserir ele tal que o elemento anterior seja menor ou igual a ele, e o elemento posterior seja maior que ele ou não "exista", e para fazer isso é só ir comparando com o ultimo elemento do nosso vetor imaginário, pois esse está ordenado, e sempre o último elemento é o maior possível naquele momento, e quando esse elemento que estão tentando "inserir" é maior que um deles é porque aquela é a posição correta, e é só repetir o processo até inserir o ultimo elemento N. Para melhor entendimento checar o código.
 
