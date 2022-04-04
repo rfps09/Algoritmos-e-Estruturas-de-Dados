@@ -18,7 +18,6 @@ public:
 
     ~vetor() {
         delete [] vetorDinamico;
-        cout << "isso é tudo pessoal" << endl;
     }
 
     int size() {return index;}
@@ -37,8 +36,11 @@ public:
     }
 
     void resize(int length) {
-        if(length > 0 && length < index) index = length;
-        if(length > this->length) reserve(length);
+        if(length > 0) index = length;
+        if(length > this->length) {
+            while(this->length < length) this->length *=2;
+            reserve(this->length);
+        }
     }
 
     void push(tipo element) {
@@ -99,7 +101,7 @@ int main() {
     }
 
     cout << endl;
-    meuVetor.reserve(2);
+    meuVetor.resize(10);
 
     for(int i=0; i < meuVetor.size(); i++) {
         cout << meuVetor[i] << " ";
@@ -111,7 +113,7 @@ int main() {
     meuVetor.push(12);
 
 
-    for(int i=0; i <= meuVetor.size(); i++) {
+    for(int i=0; i < meuVetor.size(); i++) {
         cout << meuVetor[i] << " ";
     }
 
