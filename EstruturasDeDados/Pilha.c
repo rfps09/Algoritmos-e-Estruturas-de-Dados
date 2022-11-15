@@ -22,9 +22,7 @@ void pilha_push(Pilha *stack,int value){
 
 void pilha_pop(Pilha *stack){
     Pilha *prev = stack->previous;
-    stack->size = prev->size;
-    stack->previous = prev->previous;
-    stack->top = prev->top;
+    memcpy(stack,prev,sizeof(*prev));
     free(prev);
 }
 
