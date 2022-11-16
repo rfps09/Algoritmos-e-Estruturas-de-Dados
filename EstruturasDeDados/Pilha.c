@@ -1,39 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-typedef struct Pilha {
-    int size;
-    int top;
-    struct Pilha *previous;
-    void (*push)(struct Pilha*,int);
-    void (*pop)(struct Pilha*);
-} Pilha;
+typedef struct Node {
+    int value;
+    struct Node *previous;
+} Node;
 
-Pilha* pilha();
-
-void pilha_push(Pilha *stack,int value){
-    Pilha *aux = malloc(sizeof(Pilha));
-    memcpy(aux,stack,sizeof(*stack));
-    stack->size++;
-    stack->top = value;
-    stack->previous = aux;
+Node* node() {
+    Node *node = malloc(sizeof(Node));
+    node->value = 0;
+    node->previous = NULL;
+    return node;
 }
 
-void pilha_pop(Pilha *stack){
-    Pilha *prev = stack->previous;
-    memcpy(stack,prev,sizeof(*prev));
-    free(prev);
+typedef struct Pilha {
+    Node *topo;
+    void (*push)(struct Pilha*,int);
+    void (*pop)(struct Pilha*);
+    int (*top)(struct Pilha*);
+} Pilha;
+
+void pilha_push(Pilha* pilha,int value) {
+    Node *top = node();
+    top->value = value;
+    top->previous = pilha->topo;
+    pilha->topo = top;
+}
+
+void pilha_pop(Pilha *pilha) {
+    Node *prev = pilha->topo->previous;
+    free(pilha->topo);
+    pilha->topo = prev;
+}
+
+int pilha_top(Pilha *pilha) {
+    return pilha->topo->value;
 }
 
 Pilha* pilha() {
-    Pilha* stack = malloc(sizeof(Pilha));
-    stack->size = 0;
-    stack->top = 0;
-    stack->previous = NULL;
-    stack->push = pilha_push;
-    stack->pop = pilha_pop;
-    return stack;
+    Pilha *pilha = malloc(sizeof(Pilha));
+    pilha->topo = NULL;
+    pilha->push = pilha_push;
+    pilha->pop = pilha_pop;
+    pilha->top = pilha_top;
 }
 
 int main() {
@@ -41,27 +50,25 @@ int main() {
 
     stack->push(stack,10);
 
-    printf("Topo Da Pilha: %d\n", stack->top);
+    printf("Topo Da stack: %d\n", stack->top(stack));
 
     stack->push(stack,20);
 
-    printf("Topo Da Pilha: %d\n", stack->top);
+    printf("Topo Da stack: %d\n", stack->top(stack));
 
     stack->push(stack,30);
 
-    printf("Topo Da Pilha: %d\n", stack->top);
+    printf("Topo Da stack: %d\n", stack->top(stack));
 
     stack->pop(stack);
 
-    printf("Topo Da Pilha: %d\n", stack->top);
+    printf("Topo Da stack: %d\n", stack->top(stack));
 
     stack->pop(stack);
 
-    printf("Topo Da Pilha: %d\n", stack->top);
+    printf("Topo Da stack: %d\n", stack->top(stack));
 
     stack->pop(stack);
-
-    printf("Topo Da Pilha: %d\n", stack->top);
 
     free(stack);
 
