@@ -15,6 +15,7 @@ Node* node() {
 
 typedef struct Pilha {
     Node *topo;
+    int size;
     void (*push)(struct Pilha*,int);
     void (*pop)(struct Pilha*);
     int (*top)(struct Pilha*);
@@ -25,12 +26,14 @@ void pilha_push(Pilha* pilha,int value) {
     top->value = value;
     top->previous = pilha->topo;
     pilha->topo = top;
+    pilha->size++;
 }
 
 void pilha_pop(Pilha *pilha) {
     Node *prev = pilha->topo->previous;
     free(pilha->topo);
     pilha->topo = prev;
+    pilha->size--;
 }
 
 int pilha_top(Pilha *pilha) {
@@ -40,6 +43,7 @@ int pilha_top(Pilha *pilha) {
 Pilha* pilha() {
     Pilha *pilha = malloc(sizeof(Pilha));
     pilha->topo = NULL;
+    pilha->size = 0;
     pilha->push = pilha_push;
     pilha->pop = pilha_pop;
     pilha->top = pilha_top;
