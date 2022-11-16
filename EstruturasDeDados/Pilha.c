@@ -19,6 +19,7 @@ typedef struct Pilha {
     void (*push)(struct Pilha*,int);
     void (*pop)(struct Pilha*);
     int (*top)(struct Pilha*);
+    short int (*empty)(struct Pilha*); 
 } Pilha;
 
 void pilha_push(Pilha* pilha,int value) {
@@ -33,11 +34,15 @@ void pilha_pop(Pilha *pilha) {
     Node *prev = pilha->topo->previous;
     free(pilha->topo);
     pilha->topo = prev;
-    pilha->size--;
+    if(pilha->size > 0)pilha->size--;
 }
 
 int pilha_top(Pilha *pilha) {
     return pilha->topo->value;
+}
+
+short int pilha_empty(Pilha *pilha) {
+    return pilha->size == 0;
 }
 
 Pilha* pilha() {
@@ -47,6 +52,9 @@ Pilha* pilha() {
     pilha->push = pilha_push;
     pilha->pop = pilha_pop;
     pilha->top = pilha_top;
+    pilha->empty = pilha_empty;
+
+    return pilha;
 }
 
 int main() {
@@ -62,17 +70,11 @@ int main() {
 
     stack->push(stack,30);
 
-    printf("Topo Da stack: %d\n", stack->top(stack));
+    while(!stack->empty(stack)) {
+        printf("Topo Da stack: %d\n", stack->top(stack));
 
-    stack->pop(stack);
-
-    printf("Topo Da stack: %d\n", stack->top(stack));
-
-    stack->pop(stack);
-
-    printf("Topo Da stack: %d\n", stack->top(stack));
-
-    stack->pop(stack);
+        stack->pop(stack);
+    }
 
     free(stack);
 
